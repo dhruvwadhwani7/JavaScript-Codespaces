@@ -11,12 +11,24 @@ let names = "dhruv"
 let age = 18
 let isLoggedIn = true //boolean
 let state = null // it is not undefined but null means empty 
+let city; //here city is undefined beacuse no value is assigned to it and javascript deos not determine randomly it as null so it is "undefined"
 
-console.table([names,age,isLoggedIn,state])
+console.table([names,age,isLoggedIn,state,city])
 
+
+//PRIMITIVE DATA TYPES
 /*number => 2 ^ 53 
 bigInt ,
 string ,
 boolean 
 null => standalone data type and value also 
-undefined */
+undefined 
+symbol --- uniqueness -- REACT */
+
+console.log(typeof "dhruv"); //string
+console.log(typeof age); //number 
+console.log(typeof null); //object
+console.log(typeof undefined); //undefined
+
+
+//-------OBJECT -----
