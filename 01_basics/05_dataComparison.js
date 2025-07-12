@@ -26,7 +26,6 @@ So you're comparing: NaN > 1 */
 
 // console.log(NaN == 0)
 
-
 // console.log(undefined == 1) //false 
 // console.log(undefined >= 0) //false
 
