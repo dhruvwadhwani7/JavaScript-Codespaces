@@ -6,11 +6,11 @@ console.log(typeof(score)); // calling a method
 let valueInNumber = Number(score)
 console.log(typeof valueInNumber); //number
 // now when the number is not fully number means it contains strings or any other charatcers as well 
-// the type will be changed to  number but the value of that varibale is NaN
+// the type will be changed to number but the value of that varibale is NaN
 // NaN is a Not a Number 
 console.log(valueInNumber); 
 
-// when the score is null then the value is printed 0 
+// when the score is null, then the value is printed 0
 
 // "33" , string => 33 
 // "33abc" , string => NaN , number 

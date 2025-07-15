@@ -15,5 +15,5 @@ let userOne = {
 userTwo = userOne
 userTwo.email = "77277@gmail.com"
 
-console.log(userOne.email) //as it checks through refrence so it is changed 
+console.log(userOne.email) //as it checks through reference so it is changed
 console.log(userTwo.email)
