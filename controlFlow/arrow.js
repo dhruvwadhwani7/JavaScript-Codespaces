@@ -26,7 +26,10 @@ const chai = () => {
 //basic arrow function 
 
 //IMPLICIT FUNCTIONS 
-// const addTwoNum = (num1,num2) => num1 + num2
+const addTwoNum1 = (num1,num2) => num1 + num2
+//no need to write the return keyword   
+
+
 
 
 //another way of using arrow function with ()
