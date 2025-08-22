@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>editing the dom elements</title>
+</head>
+<style>
+    body{
+        background-color: black;
+        color: white;
+    }
+</style>
+<body>
+    <ul class="language">
+        <li>Javascipt</li>
+    </ul>
+    
+</body>
+<script>
+    function addLanguage(language){
+        const li = document.createElement('li')
+        li.innerHTML = `${language}`
+        document.querySelector('ul').appendChild(li)
+    }
+    addLanguage("python")
+    addLanguage("TypeScript ")
+
+    function addOptimized(language){
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(language))
+          document.querySelector('.language').appendChild(li)
+
+    }
+    addOptimized("C++")
+
+    //EDITING OF THE VALUE
+    const secondLang = document.querySelector("li:nth-child(2)")
+    //secondLang.innerHTML = "hello MOJO"
+    //this is not optimized 
+
+    const newLi = document.createElement('li')
+    newLi.textContent = "kesi ho Mojo"
+    secondLang.replaceWith(newLi) //replace kr diya python ko hi 
+    //secondLang.appendChild(newLi) //pyhton ke neeche append ho gya h 
+
+    const firstLang = document.querySelector("li:first-child")
+    firstLang.outerHTML = '<li>HELLO HI HOW ARE YOU</li>'
+
+    //remove 
+    const lastLang = document.querySelector("li:last-child")
+    lastLang.remove()
+
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    const div = document.createElement('div')
+    console.log(div)
+    div.className = "main"
+    div.id = Math.round(Math.random() * 10 + 1)
+
+    div.setAttribute("title","helloKitty")
+    div.style.backgroundColor = "green"
+    //div.innerText = "Dhruv Wadhwani"
+    //const text = "hii how are you"
+    //div.append(text)
+    //div.innerText = "Hello Brother"
+
+    const addText = document.createTextNode("Dhruv Wadhwani")
+    div.appendChild(addText)
+
+    //const addAnotherText = document.createTextNode("hello brother")
+    //div.appendChild(addAnotherText)
+
+    document.body.appendChild(div)
+
+
+
+</script>
+</html>
