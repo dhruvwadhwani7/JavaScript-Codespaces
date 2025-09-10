@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML - Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <!-- the onclick apporarch is not scalable  -->
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    //-----APPROACH -1 ----
+    /*document.getElementById('owl').onclick = function(){
+        alert('owl hello')
+    }*/
+    //this apporach is also not very much used because less features 
+    // no propogation feature available
+
+    //APPROACH 2 -- add event 
+    /*document.getElementById('images').addEventListener('click',function(e){
+        console.log("clicked inside the ul")
+    },false) 
+
+    document.getElementById('owl').addEventListener('click',function(e){
+        console.log("owl clikced")
+        e.stopPropagation()
+        //will stop event bubble
+    },false) */
+
+    //NOTES OF THE 3rd paramter are in the copy 
+
+    //type , timestamp , default prevented
+    //target , toElement , srcElement , currentTarget
+    //clientX , clientY , screenX , screenY 
+    //altkey , ctrlkey , shift key , keyCode
+
+    //approach 3 - attach event 
+    // jQuery - on even tlistener --- ".on "
+
+    /*document.getElementById('google').addEventListener('click',function(e){
+        e.preventDefault()
+        e.stopPropagation()
+        console.log("google clicked")
+        console.log(e.defaultPrevented)
+    },false)*/
+
+    document.querySelector('#images').addEventListener('click',function(e){
+        console.log(e)
+        console.log(e.target.parentNode)
+        console.log(e.target.tagName)
+        if(e.target.tagName === 'IMG'){
+            console.log(e.target.id)
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+        }
+        //when li is clicked then fully removed ul 
+    },false)
+    
+    //removeit.parentNode.removeChild(removeit)
+</script>
+</html>

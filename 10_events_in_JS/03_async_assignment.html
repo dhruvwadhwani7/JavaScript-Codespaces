@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chai aur Javascript -- async</title>
+  </head>
+  <style>
+    body{
+        background-color: black;
+        color: white;
+    }
+    .buttons{
+        display: flex;
+        flex-direction: column;
+    }
+    #start,#stop{
+        width: 100px;
+        border-radius: 50px;
+        height: 100px;
+        margin: 20px;
+    }
+  </style>
+  <body>
+    <h1>Chai aur Javascript</h1>
+    <div class="buttons">
+      <button id="start">Start</button>
+      <button id="stop">Stop</button>
+    </div>
+  </body>
+  <script>
+    const startIt = document.querySelector("#start");
+    const stopIt = document.querySelector("#stop");
+    const sayMyNameDate = (str) => {
+      const date = new Date();
+      console.log(str, date.toLocaleTimeString());
+    };
+    startIt.addEventListener("click", function () {
+      const startedInterval = setInterval(
+        sayMyNameDate,
+        2000,
+        "Hello how are you"
+      );
+
+      stopIt.addEventListener("click", function () {
+        clearInterval(startedInterval);
+      });
+    });
+
+    //setInterval(sayMyNameDate, 2000, "hello")
+    //the hello is given as the third paramter of the function we called as a handler
+  </script>
+</html>

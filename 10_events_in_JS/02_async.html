@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur code -- async</title>
+</head>
+<body>
+    <h1>Chai aur code </h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const stopMe = document.querySelector('#stop')
+    const sayMyName = () => {
+        console.log("Dhruv")
+    }
+    const changeHeading = function(){
+        document.querySelector('h1').innerHTML = "Hello How are you"
+    }
+    const changeMe = setTimeout(changeHeading,3000)
+
+    stopMe.addEventListener('click',function(){
+        console.log("Stop clicked")
+        clearTimeout(changeMe)
+    })
+
+    
+    //setTimeout(sayMyName,2000)
+</script>
+</html>
