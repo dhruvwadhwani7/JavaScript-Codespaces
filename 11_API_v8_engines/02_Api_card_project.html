@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards</title>
+</head>
+<style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem;
+    }
+    .card {
+      background-color: #1c1c1c;
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      width: 250px;
+      box-shadow: 0 4px 10px rgba(255,255,255,0.1);
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .name {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #00d1ff;
+    }
+    .userdetails {
+      list-style: none;
+      padding: 0;
+    }
+    .userdetails li {
+      margin: 0.3rem 0;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+</style>
+<body>
+</body>
+<script>
+    const card = document.querySelector('.card')
+    const UserName = document.querySelector('.name')
+    const userDetails = document.querySelector('.userdetails')
+    
+    const requestURL = 'https://jsonplaceholder.typicode.com/users'
+    const xhr = new XMLHttpRequest
+    xhr.open('GET',requestURL)
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4 && xhr.status===200){
+            const data = JSON.parse(this.responseText)
+            console.log(data)
+            data.forEach((user)=>{
+                const card = document.createElement('div')
+                card.classList.add('card')
+
+                card.innerHTML = `
+                <h3 class="name">${user.name}</h3>
+                <ol class="userdetails">
+                  <li><strong>Username : </strong>${user.username}</li>
+                  <li><strong>Email : </strong>${user.email}</li>
+                </ol>
+                <p>Company Name : ${user.company.name}</p>
+                <p>Website : <a>${user.website}</a> </p>
+                <p>Address</p>
+                <ol class="address">
+                  <li><strong>City : </strong>${user.address.city}</li>
+                  <li><strong>State : </strong>${user.address.street}</li>
+                  <li><strong>ZipCode : </strong>${user.address.zipcode}</li>
+                </ol>
+
+                `;
+                document.body.appendChild(card)
+            })
+        }
+    }
+    xhr.send()
+</script>
+</html>
