@@ -10,6 +10,13 @@ behind the scenes it is just prototype based only
 - collection of properties and methods 
 - toLowerCase
 
+## when you use new keyword 
+### new keyword helps creating the new instances for each one of that 
+- new object is created -- INSTANCE
+- constructor function calling due to new keyword 
+- this keyword gets injected 
+-- accessed in the function 
+
 ## why use OOP 
 
 
