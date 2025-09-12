@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Previously how react acted </title>
+  </head>
+  <body>
+    <h1>Previous react how worked with bind keyword </h1>
+    <button>button clicked</button>
+  </body>
+  <script>
+    class React {
+      constructor() {
+        this.library = "React";
+        this.server = "https://localhost:3000";
+
+        document
+        .querySelector('button')
+        .addEventListener('click',this.handleClick.bind(this))
+
+        //bind(this) mtlb hai ki this.handleClick ke sath constructor ki saari properties bhi le jaaye 
+        
+        //his.hanelClick denotes ki bhai React class mein handleClick function he ek uske pass jaana h 
+        //and bind krna h usko baaki properties ke saath
+        //requirement
+        //refrence mil jaye
+        //button click krke submit hojaye
+      }
+      handleClick() {
+        console.log("Clicked");
+        console.log(this.server)
+      }
+    }
+
+    const app = new React();
+  </script>
+</html>
