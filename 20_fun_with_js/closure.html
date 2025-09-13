@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function outer() {
+      let username = "dhruv";
+
+      function inner() {
+        let innerVar = "ABC"
+        console.log("variable in inner ONE function : ", innerVar) //ABC
+        console.log("inner function ONE : ", username);
+      }
+      function innerTwo() {
+        console.log("taken variable from function One",innerVar) //error for this 
+        console.log("inner Function TWO :",username);
+      }
+      inner(); //calling the ONE
+      innerTwo(); //calling the TWO 
+      console.log("parent function taking varibale from child inner function ONE",innerVar)
+    }
+
+    outer(); //dhruv
+    console.log("TOO OUTER", username);
+  </script>
+</html>
