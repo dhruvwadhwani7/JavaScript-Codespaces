@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">☀️ WeatherNow</div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+    </ul>
+  </nav>
+
+  <!-- Search Section -->
+  <section class="search-section">
+    <h2>Check Weather</h2>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Enter city name">
+      <button id="searchBtn">Search</button>
+      <button id="locationBtn">📍 Current Location</button>
+    </div>
+  </section>
+
+  <!-- Weather Display -->
+  <section class="weather-display">
+    <div class="weather-card">
+      <h3 id="cityName">City Name</h3>
+      <p id="temperature">Temperature: -- °C</p>
+      <p id="condition">Condition: --</p>
+      <p id="humidity">Humidity: -- %</p>
+      <p id="wind">Wind Speed: -- km/h</p>
+
+    </div>
+  </section>
+
+  <!-- Forecast Section -->
+  <!-- <section class="forecast-section">
+    <h2>3-Day Forecast</h2>
+    <div class="forecast-container" id="forecastContainer">
+  
+    </div>
+  </section> -->
+
+  
+  <!-- Draggable Cities Section -->
+  <section class="drag-section">
+    <h2>Drag & Drop Favorite Cities</h2>
+    <div class="cities">
+      <div class="city" draggable="true" data-name="New York">New York</div>
+      <div class="city" draggable="true" data-name="London">London</div>
+      <div class="city" draggable="true" data-name="Tokyo">Tokyo</div>
+      <div class="city" draggable="true" data-name="Paris">Paris</div>
+      <div class="city" draggable="true" data-name="Sydney">Sydney</div>
+    </div>
+  
+
+    <div class="drop-area" aria-placeholder="drop-area">
+  
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>🌤️ WeatherNow | Minimal Weather Web App</p>
+  </footer>
+</body>
+<script src="script.js"></script>
+</html>
