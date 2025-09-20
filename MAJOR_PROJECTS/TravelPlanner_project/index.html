@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Travel Planner — HTML & CSS Template</title>
+  <meta name="description" content="Practice-ready HTML + CSS travel planner scaffold. All JS hooks included as data-js attributes and commented TODOs for behavior." />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app" role="application" aria-labelledby="appTitle">
+
+    <!-- SIDEBAR: search, results, saved places, filters -->
+    <aside class="sidebar" aria-label="Navigation & search">
+      <div class="brand">
+        <div class="logo">TP</div>
+        <div>
+          <h1 id="appTitle">Travel Planner</h1>
+          <div class="muted">Plan trips • build itineraries • export</div>
+        </div>
+      </div>
+
+      <!-- Search form -->
+      <form class="search" data-js="searchForm" aria-label="Search destinations">
+        <!-- TODO: implement JS: on submit call places API (Mapbox/Here/Google)/autocomplete and render results into #results -->
+        <div class="input">
+          <input type="search" placeholder="Search city, attraction or address" aria-label="Search" data-js="searchInput" />
+          <button class="btn" type="submit" data-js="searchBtn">Search</button>
+        </div>
+        <div class="muted-small">Tip: practice implementing debounced autocomplete.</div>
+      </form>
+
+      <div class="section">
+        <h3>Results</h3>
+        <div id="results" class="list" aria-live="polite" data-js="resultsList">
+          <!-- JS should append .place elements here. Each .place must have draggable attribute and data-id. -->
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Saved Places</h3>
+        <div id="savedPlaces" class="list" data-js="savedList">
+          <!-- JS: persistent favorites from localStorage. Drag from results into saved or reorder saved list. -->
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Filters</h3>
+        <div class="list">
+          <label class="pill"><input type="checkbox" data-js="filterType" value="hotel" /> Hotel</label>
+          <label class="pill"><input type="checkbox" data-js="filterType" value="restaurant" /> Restaurant</label>
+          <label class="pill"><input type="checkbox" data-js="filterType" value="attraction" /> Attraction</label>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- MAIN: map/canvas, itinerary builder, trip summary -->
+    <main class="main" aria-label="Planner main view">
+      <div class="topbar">
+        <h2 style="margin:0;font-size:18px">My Trip</h2>
+        <div class="controls">
+          <button class="btn small" data-js="newTripBtn">New Trip</button>
+          <button class="btn small" data-js="saveTripBtn">Save Trip</button>
+          <button class="btn small" data-js="exportBtn">Export JSON</button>
+        </div>
+      </div>
+
+      <div class="layout">
+        <section>
+          <div class="map" id="map" role="region" aria-label="Map or visual canvas" data-js="mapCanvas">
+            <div class="placeholder">
+              <strong>Map / Visual Canvas</strong>
+              <div class="muted">(Hook this area to a mapping library: Leaflet/Mapbox/Google Maps)</div>
+            </div>
+
+            <!-- Example overlay: draggable markers area. JS should add markers here. -->
+          </div>
+
+          <div style="display:flex;gap:12px;margin-top:12px;align-items:center">
+            <div class="card" style="flex:1">
+              <h4 style="margin:0 0 8px 0">Itinerary</h4>
+              <div class="itinerary" id="itinerary" data-js="itinerary" aria-label="Itinerary drop zone">
+                <!-- JS: this area is a dropzone. Items dropped here become days/slots. Support re-ordering and multi-day slots. -->
+                <div class="muted-small">Drag places from results/saved into the itinerary. Practice implementing dragenter/dragover/drop and keyboard accessible reordering.</div>
+              </div>
+            </div>
+
+            <div style="width:240px;display:flex;flex-direction:column;gap:8px">
+              <div class="card">
+                <label class="muted-small">Start</label>
+                <input class="inline-input" type="date" data-js="startDate" />
+                <label class="muted-small">End</label>
+                <input class="inline-input" type="date" data-js="endDate" />
+              </div>
+
+              <div class="card">
+                <div class="muted-small">Trip Actions</div>
+                <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+                  <button class="btn small" data-js="optimizeBtn">Optimize route (practice ACO / TSP)</button>
+                  <button class="btn small" data-js="fetchWeatherBtn">Fetch weather for dates</button>
+                  <button class="btn small" data-js="distanceBtn">Calculate distances</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </section>
+
+        <aside style="display:flex;flex-direction:column;gap:12px">
+          <div class="card">
+            <h4 style="margin-top:0">Trip Summary</h4>
+            <div class="muted-small">Auto-update this section with totals: days, distance, estimated cost.</div>
+            <div style="margin-top:8px" data-js="tripSummary">
+              <!-- JS: fill in a summary object here -->
+            </div>
+          </div>
+
+          <div class="card">
+            <h4 style="margin-top:0">Integrations & API Hooks</h4>
+            <div class="muted-small">Suggested endpoints to practice with:</div>
+            <ul class="muted-small">
+              <li>Places API (Mapbox / Here / Google Places) — search & autocomplete</li>
+              <li>Geocoding API — coordinates ↔ address</li>
+              <li>Directions API — route distances & durations</li>
+              <li>Weather API (OpenWeatherMap) — forecast by coordinate & date</li>
+              <li>Image APIs (Unsplash) — fetch photos for a place</li>
+            </ul>
+            <div class="muted-small">All calls should be done from JS with fetch() and proper error handling. Practice building wrapper functions for each API.</div>
+          </div>
+
+          <div class="card">
+            <h4 style="margin-top:0">Export / Share</h4>
+            <div class="muted-small">Buttons & behaviors included:</div>
+            <ul class="muted-small">
+              <li>Export JSON — serialize itinerary, places, dates</li>
+              <li>Import JSON — parse and render</li>
+              <li>Share link — encode trip state in URL (querystring/hash)</li>
+              <li>Print-friendly view — create a printable trip summary</li>
+            </ul>
+          </div>
+
+        </aside>
+      </div>
+
+      <!-- Modal skeleton for details / confirm actions -->
+      <div class="modal" id="modal" role="dialog" aria-modal="true">
+        <div class="dialog" data-js="modalDialog">
+          <h3 data-js="modalTitle">Modal title</h3>
+          <div data-js="modalBody">Modal body</div>
+          <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:12px">
+            <button class="btn small" data-js="modalClose">Close</button>
+            <button class="btn small" data-js="modalConfirm">Confirm</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!--
+    JAVASCRIPT HOOKS GUIDELINES (place JS in separate file or a <script> block):
+
+    - searchForm: handle submit, call autocomplete API, render results into #results
+    - resultsList: render each result as .place with attributes: draggable="true" data-id="<unique>"
+    - savedList: manage favorites; persist in localStorage under key 'tp.saved'
+    - itinerary (drop zone): implement drag & drop using DataTransfer with a JSON payload {id, name, lat, lng}
+      * support keyboard accessibility (e.g., up/down keys to reorder, Enter to pick)
+    - mapCanvas: initialize mapping library, add markers on add, pan/fit bounds for itinerary
+    - optimizeBtn: example hook to call a route optimization function (TSP solver stub)
+    - fetchWeatherBtn: iterate itinerary coordinates and call weather API for date range
+    - exportBtn: serialize state to JSON and trigger a file download
+    - import (use <input type="file"> created by JS): parse file, validate, render
+    - share link: encode state with base64 + URL-safe, and update location.hash
+    - drag visuals: add/remove .drag-over on dragenter/leave
+    - keyboard shortcuts: add key listeners (e.g., 'f' to focus search, 's' to save trip)
+    - accessibility: ensure aria-live updates when itinerary changes; focus trap modal when active
+
+    Practice ideas:
+      * Debounced autocomplete with 300ms delay
+      * Retry & exponential backoff for flaky API calls
+      * Offline caching of API responses via IndexedDB (or localStorage simpler)
+      * Simulate route optimization with greedy nearest-neighbor then improve using 2-opt
+      * Implement optimistic UI when saving to remote endpoint; rollback on failure
+  -->
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>

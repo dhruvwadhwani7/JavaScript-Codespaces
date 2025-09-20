@@ -1,18 +1,18 @@
 //---------promise 5
-const promiseFive = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    let error = true;
-    if (!error) {
-      resolve({
-        username: "Dhruv",
-        email: "dhruv@gmail.com",
-        password: "123",
-      });
-    } else {
-      reject("ERROR something went wrong with the JS");
-    }
-  }, 1000);
-});
+// const promiseFive = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     let error = true;
+//     if (!error) {
+//       resolve({
+//         username: "Dhruv",
+//         email: "dhruv@gmail.com",
+//         password: "123",
+//       });
+//     } else {
+//       reject("ERROR something went wrong with the JS");
+//     }
+//   }, 1000);
+// });
 
 //you can handle the promise using the async and await
 /*async function consumePromiseFive(){

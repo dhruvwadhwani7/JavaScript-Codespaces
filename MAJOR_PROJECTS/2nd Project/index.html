@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Basic Travel Planner — HTML + CSS (JS practice)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Left: Search + available places (draggable items) -->
+    <aside class="panel">
+      <h3>Search places</h3>
+      <div class="search-box">
+        <input id="place-search" placeholder="Search city, landmark, address..." />
+        <button id="search-btn">Search</button>
+      </div>
+
+      <div style="margin-bottom:10px;color:var(--muted);font-size:13px">Tip: drag items into a day in the middle to build your itinerary.</div>
+
+      <div class="places" id="places-list">
+        <!-- Sample draggable items. Use JS to populate from an API (e.g., places API, geocoding). -->
+        <div class="place" draggable="true" data-name="Paris, France" data-lat="48.8566" data-lon="2.3522">Paris, France</div>
+        <div class="place" draggable="true" data-name="New York, USA" data-lat="40.7128" data-lon="-74.0060">New York, USA</div>
+        <div class="place" draggable="true" data-name="Mumbai, India" data-lat="19.0760" data-lon="72.8777">Mumbai, India</div>
+      </div>
+
+      <hr style="margin:12px 0;border:0;border-top:1px solid #eef2ff" />
+
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="btn" id="add-place">+ Add custom</button>
+        <button class="btn ghost" id="clear-places">Clear</button>
+      </div>
+    </aside>
+
+    <!-- Middle: Itinerary canvas with droppable days -->
+    <main class="itinerary">
+      <div class="header">
+        <h3 style="margin:0">Itinerary</h3>
+        <div class="controls">
+          <button class="btn ghost" id="add-day">+ Day</button>
+          <button class="btn" id="export-json">Export JSON</button>
+          <button class="btn" id="save-local">Save (local)</button>
+        </div>
+      </div>
+
+      <div class="day-list" id="day-list">
+        <!-- Default: two days. JS should allow adding/removing days. -->
+        <section class="day">
+          <h4>Day 1</h4>
+          <div class="drop-area" data-day="1">
+            <!-- Items dropped here should become itinerary items. JS: handle drag/drop and reordering. -->
+          </div>
+        </section>
+
+        <section class="day">
+          <h4>Day 2</h4>
+          <div class="drop-area" data-day="2"></div>
+        </section>
+      </div>
+
+      <div style="margin-top:6px;color:var(--muted);font-size:13px">Practice tasks: implement dragstart, dragover, drop, and persist the itinerary to localStorage or call a backend.</div>
+    </main>
+
+    <!-- Right: Summary, API widgets, map placeholder -->
+    <aside class="summary">
+      <div class="widget">
+        <h4>Trip summary</h4>
+        <div id="summary-content" style="font-size:13px;color:var(--muted)">0 places selected • 0 days</div>
+      </div>
+
+      <div class="widget">
+        <h4>Weather (API demo)</h4>
+        <div class="weather-preview" id="weather-preview">No city selected. Practice: fetch weather for a place using an API key and populate here.</div>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <input id="weather-city" placeholder="City for weather" style="flex:1;padding:8px;border-radius:8px;border:1px solid #e6e9ef" />
+          <button class="btn" id="get-weather">Fetch</button>
+        </div>
+        <small style="display:block;margin-top:8px;color:var(--muted)">Hint: use OpenWeatherMap or Weather API; replace fetch URL with your key.</small>
+      </div>
+
+      <div class="widget">
+        <h4>Map / Mapbox placeholder</h4>
+        <div class="map-placeholder" id="map">Map will go here (practice: integrate Leaflet or Mapbox in JS)</div>
+      </div>
+
+      <div class="widget">
+        <h4>Quick tools</h4>
+        <button class="btn ghost" id="clear-itinerary">Clear itinerary</button>
+        <button class="btn" id="load-sample">Load sample trip</button>
+      </div>
+    </aside>
+  </div>
+
+  <!--
+    JavaScript practice checklist (put this into your JS file):
+      1) Drag & drop: use draggable="true" items and implement dragstart, dragover, dragenter, drop to move items into a .drop-area.
+      2) Reordering: on drop, insertBefore or appendChild; add a small "move" handle in CSS/HTML if you want.
+      3) Persist: save itinerary structure to localStorage (JSON.stringify) and load on page load.
+      4) API calls: fetch weather (OpenWeatherMap), reverse geocoding (Nominatim or Google Geocoding), or places API to populate places list.
+      5) Export: implement Export JSON to download a .json file of the itinerary.
+      6) Map: integrate Leaflet in JS and place markers when items are added.
+      7) Accessibility: ensure keyboard drag-drop alternatives (tab + buttons) or at least focus states.
+
+    This HTML is intentionally JS-free so you can practice by wiring up event listeners.
+  -->
+</body>
+<script src="script.js"></script>
+</html>
+
